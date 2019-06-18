@@ -33,6 +33,7 @@
       <view class="uploader-text" data-src="https://www.xiaohongshu.com/explore">小红书</view>
       <view class="uploader-text" data-src="https://www.ximalaya.com/ertong/">喜马拉雅（儿童）</view>    
       <view class="uploader-text" bindtap='navigateToMiniProgram'>大转盘</view>
+      <view class="uploader-text" bindtap='navigateToMiniProgram2'>迅捷文字识别</view>
     </view>
   </view>
 

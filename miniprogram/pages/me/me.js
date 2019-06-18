@@ -233,9 +233,25 @@ Page({
   navigateToMiniProgram() {
     wx.navigateToMiniProgram({
       appId: 'wx519da88d998da681',
+      path: '',
+      // extraData: {
+      //   from: 'bar'
+      // },
+      // envVersion: 'develop',
+      success(res) {
+        // 打开其他小程序成功同步触发
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  navigateToMiniProgram2() {
+    wx.navigateToMiniProgram({
+      appId: 'wxc111e738cfc226b7',
       // path: 'pages/me/me',
       // extraData: {
-      //   from: 'xxxxx'
+      //   from: 'bar'
       // },
       // envVersion: 'develop',
       success(res) {
