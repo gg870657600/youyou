@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 用户 openid -->
+  <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+    <view>
+      <button class="userinfo-nickname" bindtap="onGetOpenid">{{userInfo.nickName}} (点击获取 openid)</button>
+    </view>
+  </view>
+
+
+  <!-- 上传图片 -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="doUpload">
+      <text>上传图片</text>
+    </view>
+    <view class="uploader-container" wx:if="{{imgUrl}}">
+      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+    </view>
+
+    <view bindtap="uploadVideo" class="uploader-text">
+      <text>上传视频</text>
+    </view>
+    <view bindtap="webView">
+      <view class="uploader-text" data-src="https://www.zhihu.com/explore">知乎</view>
+      <view class="uploader-text" data-src="https://landing.toutiao.com/">今日头条</view>
+      <view class="uploader-text" data-src="https://www.xiaohongshu.com/explore">小红书</view>
+      <view class="uploader-text" data-src="https://www.ximalaya.com/ertong/">喜马拉雅（儿童）</view>    
+      <view class="uploader-text" bindtap='navigateToMiniProgram'>大转盘</view>
+    </view>
+  </view>
+
+  
+</view>

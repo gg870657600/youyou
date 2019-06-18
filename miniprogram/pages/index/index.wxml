@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="title">
+    <text>留言板</text> 
+  </view>
+  <!-- 留言列表 -->
+  <scroll-view class="msgList" scroll-y="true" scroll-top="{{scrollTop}}">
+    <view class="wrap" wx:for="{{msg}}" wx:key="{{index}}">
+      <text class="msg-info" wx:if="{{msg.length==0}}">暂无留言……^_^</text>
+      <image src="{{item.headimg}}" class="headImg"></image>
+      <text class="owner"> {{item.owner}} : </text>
+      <text class="content" style="overflow:scroll">{{item.message}}</text>
+      <text class="time"> {{item.time}}</text>      
+    </view>
+  </scroll-view>
+
+  <view class="inputContent">
+    <input type="text" value="{{inputValue}}" bindinput='updateValue' placeholder='请输入...'/>
+  </view>
+  <view class="send">
+    <button bindtap='addMsg'>发表</button>
+  </view>
+
+</view>

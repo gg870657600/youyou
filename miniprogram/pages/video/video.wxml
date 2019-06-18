@@ -1,0 +1,3 @@
+<view wx:for="{{videoId}}" wx:for-item="item" wx:for-index="index" wx:key="{{index}}"> 
+  <video src="{{item}}" data-item="{{index}}" controls='true'></video>
+</view>
