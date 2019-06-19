@@ -9,6 +9,8 @@ Page({
  */
   data: {
     videoId: [],
+    fileid: "",
+    show: false
   },
 
   /**
@@ -40,6 +42,58 @@ Page({
 
     }
     videodata()
+    
+  },
+
+  //长按事件
+  bindLongTap(e) {
+    const t = e.target.dataset.fileid
+    console.log("长按事件",t)
+    this.setData({
+      show : true,
+      fileid: t
+    })
+  },
+  //下载视频
+  downloadVideo(e) {
+    const fileUrl = this.data.fileid
+    console.log('fileUrl', fileUrl)
+    this.setData({
+      show: false
+    })
+    wx.showLoading({
+      title: '下载中',
+    })
+    wx.cloud.downloadFile({
+      fileID: fileUrl,
+      success: res => {
+        // 获取零时路径
+        console.log(res.tempFilePath)
+        wx.saveVideoToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success: res3 => {
+            console.log(res3)
+            // wx.showToast({
+            //   title: '下载成功',
+            //   icon: 'success',
+            //   mask: true,
+            //   duration: 5000
+            // })
+            wx.hideLoading()
+          }
+        })
+        
+      },
+      fail: err => {
+        // handle error
+      }
+    })
+  },
+  //关闭隐藏页面
+  hidePageClose() {
+    this.setData({
+      show: false
+    })
   },
   /**
    * 生命周期函数--监听页面显示

@@ -1,3 +1,22 @@
 video{
   width:100%
 }
+.hidePage{
+  position: fixed;
+  z-index: 9999;
+  bottom: 0;
+  width:100%;
+  margin:0 auto;
+  background: white;
+}
+.hidePage button{
+  height: 100rpx;  
+}
+button::after {
+  border-bottom: 1rpx solid rgba(0,0,0,0.2)
+}
+.plain-hover{
+  position: relative;
+  top: 3rpx;
+  box-shadow:0px 0px 10px #bbbec4 inset; 
+}

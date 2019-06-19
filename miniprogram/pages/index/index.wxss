@@ -9,13 +9,15 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561514779&di=e2d4b216b2ea52c698ea8e72e2019ad8&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201601%2F05%2F20160105171447_yPKmU.thumb.700_0.jpeg);
+  background-size:100% 100%;
 }
 .title{
   width:100%;
   height: 100rpx;
   line-height: 100rpx;
-  background-color: blue;
-  margin:2px;
+  background-color: rgba(133, 6, 133, 0.8);
+  margin-bottom:2px;
   text-align: center
 
 }
@@ -24,8 +26,8 @@ page {
 } */
 .msgList{
   width:100%;
-  height:1000rpx;
-  background-color: green;
+  height:870rpx;
+  background-color: rgba(211, 58, 211, 0.1);
   display: flex; 
   flex-direction: column;
 
@@ -67,12 +69,13 @@ page {
   background-color: rgb(107, 0, 128);
   margin:2px;
   display: flex;
-
+  border-radius: 10px
 }
 .inputContent input{
   height: 100%;
   width:100%;
   text-overflow:ellipsis;
+  border-radius: 10px
 }
 .send{
   width:100%;
