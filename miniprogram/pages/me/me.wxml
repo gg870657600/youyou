@@ -27,15 +27,32 @@
     <view bindtap="uploadVideo" class="uploader-text">
       <text>上传视频</text>
     </view>
+
+    <view class="uploader-text" bindtap="son">
+      <text>育儿</text>
+    </view>
+
     <view bindtap="webView">
       <view class="uploader-text" data-src="https://www.zhihu.com/explore">知乎</view>
       <view class="uploader-text" data-src="https://landing.toutiao.com/">今日头条</view>
       <view class="uploader-text" data-src="https://www.xiaohongshu.com/explore">小红书</view>
-      <view class="uploader-text" data-src="https://www.ximalaya.com/ertong/">喜马拉雅（儿童）</view>    
+      <view class="uploader-text" data-src="https://www.ximalaya.com/ertong/">喜马拉雅（儿童）    </view>    
       <view class="uploader-text" bindtap='navigateToMiniProgram'>大转盘</view>
       <view class="uploader-text" bindtap='navigateToMiniProgram2'>迅捷文字识别</view>
     </view>
   </view>
+  <!-- 育儿频道影藏内容 -->
+  <view class="hidePage" wx:if="{{sonPage}}">
+    <button class="cancel" bindtap="hidePageClose" hover-class="plain-hover"><icon type="cancel" size="40" color="rgb(0,255,255)"/>关闭页面</button>
+    <button bindtap="navigateToMiniProgram3" hover-class="plain-hover">宝宝树孕育</button>
+    <button bindtap="navigateToMiniProgram4" hover-class="plain-hover">小思妈妈营养辅食</button>
+    <button bindtap="navigateToMiniProgram5" hover-class="plain-hover">宝宝辅食微课堂</button>
+    <button bindtap="navigateToMiniProgram6" hover-class="plain-hover">大J育儿说</button>
+    <button bindtap="navigateToMiniProgram7" hover-class="plain-hover">年糕妈妈育儿百科</button>
+    <button bindtap="navigateToMiniProgram8" hover-class="plain-hover">千千动画屋</button>
+  </view>
+
+  
 
   
 </view>

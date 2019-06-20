@@ -12,7 +12,8 @@ Page({
     takeSession: false,
     requestResult: '',
     srcVideo:'',
-    jokeData:[]
+    jokeData:[],
+    sonPage:false
   },
 
   /**
@@ -256,6 +257,85 @@ Page({
       // envVersion: 'develop',
       success(res) {
         // 打开其他小程序成功同步触发
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 育儿界面函数
+  son() {
+    this.setData({sonPage:true})
+  },
+  hidePageClose() {
+    this.setData({ sonPage: false })
+  },
+  //宝宝树孕育
+  navigateToMiniProgram3() {
+    wx.navigateToMiniProgram({
+      appId: 'wxb7a563d7da8ea2ee',
+      // path: 'pages/me/me',
+      // extraData: {
+      //   from: 'bar'
+      // },
+      // envVersion: 'develop',
+      success(res) {
+        // 打开其他小程序成功同步触发
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 小思妈妈营养辅食
+  navigateToMiniProgram4() {
+    wx.navigateToMiniProgram({
+      appId: 'wx9633e6ae01bc6e46',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 宝宝辅食微课堂
+  navigateToMiniProgram5() {
+    wx.navigateToMiniProgram({
+      appId: 'wxb46e48ee0b375615',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 大J育儿说
+  navigateToMiniProgram6() {
+    wx.navigateToMiniProgram({
+      appId: 'wx4178508f9acf2fce',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 年糕妈妈育儿百科
+  navigateToMiniProgram7() {
+    wx.navigateToMiniProgram({
+      appId: 'wx1da266fa6db4c014',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 千千动画屋
+  navigateToMiniProgram8() {
+    wx.navigateToMiniProgram({
+      appId: 'wx457d487a663f2186',
+      success(res) {
         wx.showToast({
           title: '跳转成功'
         })
