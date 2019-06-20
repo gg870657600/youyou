@@ -89,4 +89,11 @@ page {
 }
 .send button{
   line-height:80rpx;
+  width:100%
+}
+/* 按钮特效 */
+.plain-hover{
+  position: relative;
+  top: 3rpx;
+  box-shadow:0px 0px 10px #bbbec4 inset; 
 }

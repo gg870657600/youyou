@@ -4,9 +4,9 @@
     <text>留言板</text> 
   </view>
   <!-- 留言列表 -->
+  <text class="msg-info" wx:if="{{msg.length==0}}">暂无留言……^_^</text>
   <scroll-view class="msgList" scroll-y="true" scroll-top="{{scrollTop}}">
-    <view class="wrap" wx:for="{{msg}}" wx:key="{{index}}">
-      <text class="msg-info" wx:if="{{msg.length==0}}">暂无留言……^_^</text>
+    <view class="wrap" wx:for="{{msg}}" wx:key="{{index}}">      
       <image src="{{item.headimg}}" class="headImg"></image>
       <text class="owner"> {{item.owner}} : </text>
       <text class="content" style="overflow:scroll">{{item.message}}</text>
@@ -18,7 +18,7 @@
     <input type="text" value="{{inputValue}}" bindinput='updateValue' placeholder=' 请输入...'/>
   </view>
   <view class="send">
-    <button bindtap='addMsg'>发表</button>
+    <button bindtap='addMsg' hover-class="plain-hover">发表</button>
   </view>
 
 </view>

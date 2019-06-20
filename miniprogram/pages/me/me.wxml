@@ -32,7 +32,7 @@
       <text>育儿</text>
     </view>
 
-    <view bindtap="webView">
+    <view bindtap="webView" class="webView">
       <view class="uploader-text" data-src="https://www.zhihu.com/explore">知乎</view>
       <view class="uploader-text" data-src="https://landing.toutiao.com/">今日头条</view>
       <view class="uploader-text" data-src="https://www.xiaohongshu.com/explore">小红书</view>
@@ -41,6 +41,8 @@
       <view class="uploader-text" bindtap='navigateToMiniProgram2'>迅捷文字识别</view>
     </view>
   </view>
+  <!-- 遮罩层 -->
+  <view class="maskLayer" wx:if="{{sonPage}}" bindtap="hidePageClose"></view>
   <!-- 育儿频道影藏内容 -->
   <view class="hidePage" wx:if="{{sonPage}}">
     <button class="cancel" bindtap="hidePageClose" hover-class="plain-hover"><icon type="cancel" size="40" color="rgb(0,255,255)"/>关闭页面</button>
@@ -51,6 +53,8 @@
     <button bindtap="navigateToMiniProgram7" hover-class="plain-hover">年糕妈妈育儿百科</button>
     <button bindtap="navigateToMiniProgram8" hover-class="plain-hover">千千动画屋</button>
   </view>
+  <!-- 小白图片 -->
+  <image class="xiaobai" src="../../images/xiaobai.jpg"></image>
 
   
 
