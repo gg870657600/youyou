@@ -6,7 +6,9 @@ Page({
     inputValue: "",
     msg: [],
     headImg: "",
-    scrollTop: -1
+    scrollTop: -1,
+    srcUrl: "../../images/music1.png",    //音乐播放图标地址
+    imgchoose: "music1"     //通过改变类名，控制播放图标的样式
   },
 
   onLoad: function () {
@@ -21,7 +23,7 @@ Page({
       })
       return
     }
-       
+
     async function msglist() {
       const db = wx.cloud.database()
       //获取msg数据总条数      
@@ -63,6 +65,27 @@ Page({
       inputValue: e.detail.value
     })
   },
+  //背景音乐播放、暂停
+  backMusic(){
+    var _this = this
+    if (_this.data.srcUrl == "../../images/music1.png"){  
+      wx.stopBackgroundAudio({
+        success: res => {
+          _this.setData({
+            srcUrl: "../../images/music2.png",
+            imgchoose: "music2"
+          })
+        }
+      })
+    }else{      
+      app.globalData.bindback()
+      _this.setData({
+        srcUrl: "../../images/music1.png",
+        imgchoose: "music1"
+      })
+    }    
+  },
+  //添加信息
   addMsg: function () {
     var _this = this
     console.log("value:", _this.data.inputValue, "owner", app.globalData.userInfo)

@@ -1,10 +1,13 @@
 <!--index.wxml-->
 <view class="container">
   <view class="title">
-    <text>留言板</text> 
+    <text>留言板</text>
+    <view bindtap='backMusic'>
+      <image class="{{imgchoose}}" src="{{srcUrl}}" ></image> 
+    </view>    
   </view>
   <!-- 留言列表 -->
-  <text class="msg-info" wx:if="{{msg.length==0}}">暂无留言……^_^</text>
+  <text wx:if="{{msg.length==0}}">暂无留言……^_^</text>
   <scroll-view class="msgList" scroll-y="true" scroll-top="{{scrollTop}}">
     <view class="wrap" wx:for="{{msg}}" wx:key="{{index}}">      
       <image src="{{item.headimg}}" class="headImg"></image>
