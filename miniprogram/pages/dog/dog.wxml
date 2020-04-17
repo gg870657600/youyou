@@ -1,0 +1,17 @@
+<!--pages/dog/dog.wxml-->
+<view class="container">
+  <image class='background' src="../../images/content.jpg" mode="aspectFill"></image>
+  <view id="header">
+    <image class="image_header" src="../../images/logo.gif" alt="logo"></image>
+    <h1>舔狗</h1>
+    <p>我们是狗，舔狗</p>
+  </view>
+  <view id="article">
+    <text>{{content}}</text>
+    <view id="time">{{time}}</view>
+  </view>
+
+  <image id="refresh" src="../../images/refresh.gif" bindtap="refresh"></image>
+  <image id="myRefresh" src="../../images/refresh.gif" bindtap="myRefresh"></image>
+
+</view>

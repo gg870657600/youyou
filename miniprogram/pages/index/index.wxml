@@ -6,9 +6,10 @@
       <image class="{{imgchoose}}" src="{{srcUrl}}" ></image> 
     </view>    
   </view>
+  <image class='background' src="../../images/timg.jpg" mode="aspectFill"></image>
   <!-- 留言列表 -->
   <text wx:if="{{msg.length==0}}">暂无留言……^_^</text>
-  <scroll-view class="msgList" scroll-y="true" scroll-top="{{scrollTop}}">
+  <scroll-view class="msgList" style="height: {{scrollViewHeight}}px" scroll-y="true" scroll-top="{{scrollTop}}">
     <view class="wrap" wx:for="{{msg}}" wx:key="{{index}}">      
       <image src="{{item.headimg}}" class="headImg"></image>
       <text class="owner"> {{item.owner}} : </text>
@@ -19,9 +20,7 @@
 
   <view class="inputContent">
     <input type="text" value="{{inputValue}}" bindinput='updateValue' placeholder=' 请输入...'/>
-  </view>
-  <view class="send">
-    <button bindtap='addMsg' hover-class="plain-hover">发表</button>
+    <button class="send" bindtap='addMsg' hover-class="plain-hover">发表</button>
   </view>
 
 </view>

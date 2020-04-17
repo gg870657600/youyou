@@ -1,6 +1,6 @@
 //index.js
 const app = getApp()
-var msgList = []   //存放每次取的msg数据
+
 Page({
   data: {
     inputValue: "",
@@ -8,22 +8,41 @@ Page({
     headImg: "",
     scrollTop: -1,
     srcUrl: "../../images/music1.png",    //音乐播放图标地址
-    imgchoose: "music1"     //通过改变类名，控制播放图标的样式
+    imgchoose: "music1",     //通过改变类名，控制播放图标的样式
+    scrollViewHeight:0
   },
 
   onLoad: function () {
-    var _this = this
+    var _this = this;
+    var msgList = []   //存放每次取的msg数据
     _this.setData({
       headImg: wx.getStorageSync('userInfo').avatarUrl
     })
-    console.log("99999",_this.data.headImg)
+    // scoll_view必须设置高度，这里通过函数获取动态高度，手机界面高度-头部元素高度-底部元素高度
+    //先取出页面高度 windowHeight
+    let windowHeight = wx.getSystemInfoSync().windowHeight;
+    // 获取节点高度，根据文档，先创建一个SelectorQuery对象实例
+    let query = wx.createSelectorQuery();
+    query.select('.title').boundingClientRect()
+    query.select('.inputContent').boundingClientRect()
+    query.exec((res) => {
+      let titleHeight = res[0].height                                          // 获取节点高度
+      let inputContentHeight = res[1].height
+      // 然后就是做个减法
+      let scrollViewHeight = windowHeight - titleHeight - inputContentHeight;
+      console.log('Height:' + windowHeight + ';' + titleHeight + ';' + inputContentHeight);
+      // 算出来之后存到data对象里面
+      this.setData({
+        scrollViewHeight: scrollViewHeight
+      });      
+    })
+
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
       })
       return
     }
-
     async function msglist() {
       const db = wx.cloud.database()
       //获取msg数据总条数      
@@ -37,14 +56,15 @@ Page({
         const msgdata =await db.collection('msg').skip(i * 20 - 20).limit(20).get()    
         msgdata.data.forEach(item => {
             msgList.push(item)
-          })
-        console.log('msgList:', msgList)
+          })        
       }
+      console.log('msgList:', msgList)
       _this.setData({
         msg: msgList,
         //是每次打开页面停留在最底部，给scroll-view设置scroll-top属性，绑定一个变量：每次添加一个msg后数一下当前一共多少个msg，然后每个msg算它高度是1000（只要大于msg的高度都行）
         scrollTop: msgList.length * 1000
       })
+      console.log('scrollTop:', _this.data.scrollTop)
       msgList =[]
     }
     msglist()
@@ -132,7 +152,7 @@ Page({
     
     // 使页面滚动到底部
     wx.pageScrollTo({
-      scrollTop: 800
+      scrollTop: 600
     })
  
   },
