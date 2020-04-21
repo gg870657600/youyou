@@ -1,6 +1,6 @@
 <view>
   <view wx:for="{{videoId}}" wx:for-item="item" wx:for-index="index" wx:key="{{index}}"> 
-    <video src="{{item}}" data-item="{{index}}" controls='true' data-fileid="{{item}}" bindlongpress="bindLongTap" bindtouchstart="touchStart" bindtouchend="touchEnd" initial-time='0.01'></video>
+    <video src="{{item}}" data-item="{{index}}" controls='true' data-fileid="{{item}}" bindlongpress="bindLongTap" bindtouchstart="touchStart" bindtouchend="touchEnd" ></video>
 
   </view>
   <cover-view class="hidePage" wx:if="{{show}}">

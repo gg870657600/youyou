@@ -1,0 +1,20 @@
+/* pages/movie/movie.wxss */
+video{
+  width: 100%;
+}
+button::after{ 
+	border: none;
+  border-radius: 0; 
+}
+button{
+  border-radius: 50rpx;
+  padding: 5rpx;
+  margin: 25rpx;
+  color: white
+}
+#buttonList[loading] ::before {
+  vertical-align: text-bottom;
+}
+/* button.button-hover {
+  background-color: grey;
+} */

@@ -3,6 +3,7 @@ const app = getApp()
 var fileID = []
 var videoListStart = 0
 var total
+var limitNum = 10;
 Page({
   /**
  * 页面的初始数据
@@ -28,9 +29,8 @@ Page({
       //分几次取
       const count = Math.ceil(total / 20)
       console.log('count:', rescount)
-
-      
-      const vdata = await db.collection('video').skip(videoListStart).limit(10).get()
+     
+      const vdata = await db.collection('video').orderBy('createTime', 'desc').skip(videoListStart).limit(limitNum).get()
       vdata.data.forEach(item => {
         fileID.push(item.fileId)
       })
@@ -42,7 +42,7 @@ Page({
 
     }
     videodata()
-    
+    fileID = []
   },
 
   //长按事件
@@ -99,7 +99,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // this.onLoad()
+    var _this = this
+    const db = wx.cloud.database()
+    //获取image数据总条数      
+    const rescount = db.collection('video').count()
+    if (total != rescount.total) {
+      _this.onLoad();
+    }
   },
 
   /**
@@ -107,11 +113,9 @@ Page({
  */
   //需要在app.json中配置window   "enablePullDownRefresh": true
   onPullDownRefresh: function () {
-    console.log('xiala')
-    this.data.videoId = []
-    fileID = []
-    videoListStart -= 10
-    if (videoListStart >= 0) {
+    console.log('xiala')    
+    if (videoListStart - limitNum >= 0) {
+      videoListStart -= limitNum
       this.onLoad()
       wx.showToast({
         icon: 'none',
@@ -125,11 +129,9 @@ Page({
   /**
      * 页面上拉触底事件的处理函数
      */
-  onReachBottom: function () {
-    this.data.videoId = []
-    fileID = []
-    videoListStart += 20
-    if (videoListStart < total) {
+  onReachBottom: function () {   
+    if (videoListStart + limitNum < total) {
+      videoListStart += limitNum
       this.onLoad()
       wx.showToast({
         icon: 'none',
@@ -141,6 +143,10 @@ Page({
       //   scrollTop: 0
       // })
     }
-
+    wx.showToast({
+      icon: 'none',
+      title: '没有啦...',
+      duration: 2000
+    })
   },
 })

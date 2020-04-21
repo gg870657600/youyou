@@ -1,0 +1,8 @@
+<!--pages/movie/movie.wxml-->
+<view>
+  <video src="{{src}}" controls='true' bindlongpress="bindLongTap" bindtouchstart="touchStart" bindtouchend="touchEnd" >
+  </video>
+  <view bindtap="srcFun"  >
+    <button id="buttonList" loading='{{key==index? "true" : ""}}' wx:for="{{movieData}}" wx:for-index="key"  wx:for-item="item" data-src="{{item.src}}" size="mini" data-key="{{key}}" style="background-color:{{randomColorArr[key]}};">{{item.name}}</button>
+  </view>
+</view>

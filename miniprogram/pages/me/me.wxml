@@ -17,24 +17,31 @@
 
   <!-- 上传图片 -->
   <view class="uploader">
-    <view class="uploader-text" bindtap="doUpload">
+    <button class="uploader-text" bindtap="doUpload">
       <text>上传图片</text>
-    </view>
+    </button>
     <view class="uploader-container" wx:if="{{imgUrl}}">
       <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
     </view>
 
-    <view bindtap="uploadVideo" class="uploader-text">
+    <button bindtap="uploadVideo" class="uploader-text">
       <text>上传视频</text>
-    </view>
+    </button>
 
-    <view class="uploader-text" bindtap="son">
+    <button class="uploader-text" bindtap="son">
       <text>育儿</text>
-    </view>
+    </button>
 
-    <view class="uploader-text">
-      <navigator url="../dog/dog" hover-class="navigator-hover">舔狗日记</navigator>
-    </view>
+    <navigator url="../dog/dog" hover-class="navigator-hover">
+      <button class="uploader-text">
+        <text>舔狗日记</text>
+      </button>
+    </navigator>
+    <navigator url="../movie/movie" hover-class="navigator-hover">
+      <button class="uploader-text">
+        <text>你要的电影我都有</text>
+      </button>
+    </navigator>
 
     <!-- <view bindtap="webView" class="webView">
       <view class="uploader-text" data-src="https://www.huhexian.com/tiangou">舔狗日记</view>

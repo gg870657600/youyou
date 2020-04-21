@@ -62,6 +62,7 @@ page {
   line-height: 52px;
   font-size: 34rpx;
   color: #ae00ff;
+  text-align: left;
 }
 
 .uploader-container {
@@ -110,7 +111,9 @@ button::after {
   background-color: rgb(16, 106, 122);
   color: rgb(0,255,255)
 }
-
+navigator{
+  width: 100%
+}
 /* 小白图片 */
 .xiaobai{
   /* position: fixed;

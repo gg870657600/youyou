@@ -2,6 +2,7 @@
 var fileID = []
 var imgListStart = 0     //返回的img fileId列表，从索引0开始取数据
 var total     //返回的img fileId列表元素总数
+var limitNum = 10    //从数据库取多少个元素
 Page({
 
   /**
@@ -27,8 +28,8 @@ Page({
 
       console.log('count:', rescount)
 
-
-      const imagedata = await db.collection('image').skip(imgListStart).limit(20).get()
+      //把取的的数据倒序排列，push到fileID集合
+      const imagedata = await db.collection('image').orderBy('createTime', 'desc').skip(imgListStart).limit(limitNum).get()      
       imagedata.data.forEach(item => {
         fileID.push(item.fileId)
       })
@@ -40,6 +41,7 @@ Page({
 
     }
     imgdata()
+    fileID = [];
     // console.log('imageId:',_this.data.imageId)
   },
 
@@ -54,7 +56,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // this.onLoad()
+    var _this = this
+    const db = wx.cloud.database()
+    //获取image数据总条数      
+    const rescount = db.collection('image').count()
+    if (total != rescount.total){
+      _this.onLoad();
+    }
+    
   },
 
   // 点击图片预览
@@ -90,10 +99,8 @@ Page({
   //需要在app.json中配置window   "enablePullDownRefresh": true
   onPullDownRefresh: function () {
     console.log('xiala')
-    this.data.imageId = []
-    fileID = []
-    imgListStart -= 20
-    if (imgListStart >= 0) {
+    if (imgListStart - limitNum >= 0) {
+      imgListStart -= limitNum
       this.onLoad()
       wx.showToast({
         icon: 'none',
@@ -108,12 +115,8 @@ Page({
      * 页面上拉触底事件的处理函数
      */
   onReachBottom: function () {
-    this.setData({
-      imageId :[]
-    })
-    fileID = []
-    imgListStart +=20
-    if (imgListStart < total){
+    if (imgListStart + limitNum < total){
+      imgListStart += limitNum
       this.onLoad()
       wx.showToast({
         icon: 'none',
@@ -125,6 +128,11 @@ Page({
       //   scrollTop: 0
       // })
     }
+    wx.showToast({
+      icon: 'none',
+      title: '没有啦...',
+      duration: 2000
+    })
 
   },
 

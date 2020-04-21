@@ -5,6 +5,7 @@
     "pages/video/video",
     "pages/me/me",
     "pages/dog/dog",
+    "pages/movie/movie",
     "pages/webView/webView"
   ],
   "window": {

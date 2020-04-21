@@ -124,7 +124,8 @@ Page({
               db.collection('image').add({
                 data:{
                   fileId: res.fileID,
-                  type:"image"
+                  type:"image",
+                  createTime: db.serverDate()
                 }
               }).then(res =>{
                 console.log('add image fileId success')
@@ -197,7 +198,8 @@ Page({
             db.collection('video').add({
               data: {
                 fileId: res.fileID,
-                type: "video"
+                type: "video",
+                createTime: db.serverDate()
               }
             }).then(res => {
               console.log('add video fileId success')
