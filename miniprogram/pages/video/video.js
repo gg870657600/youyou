@@ -4,6 +4,7 @@ var fileID = []
 var videoListStart = 0
 var total
 var limitNum = 10;
+var fileId = ""
 Page({
   /**
  * 页面的初始数据
@@ -48,6 +49,7 @@ Page({
   //长按事件
   bindLongTap(e) {
     const t = e.target.dataset.fileid
+    fileId = e.target.dataset.fileid;
     console.log("长按事件",t)
     this.setData({
       show : true,
@@ -147,6 +149,69 @@ Page({
       icon: 'none',
       title: '没有啦...',
       duration: 2000
+    })
+  },
+  deleteVideo:function(e){
+    console.log('fileId:', fileId);
+    var _this = this;
+    //有时候长按会获取不到id
+    if (fileId == null) {
+      wx.showToast({
+        title: '未获取到id，请长按重新尝试',
+        icon: 'none',
+      })
+      return
+    }
+
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除该视频吗？',
+      success: function (res) {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '删除中...',
+          })
+          //数据库 原生删除
+          const db = wx.cloud.database();
+          db.collection('video').where({
+            fileId: fileId
+          }).remove()
+            .then(() => {
+              console.log("数据库视频删除成功");
+              wx.hideLoading();
+            })
+            .catch(err => {
+              console.log(err);
+            });
+          //云函数删除
+          wx.cloud.callFunction({
+            name: "cloudStorage",
+            data: {
+              fileId: fileId
+            },
+            success: res => {
+              wx.showToast({
+                title: '[云存储] 删除成功！！',
+                icon: 'none',
+              })
+              console.log('[云存储] 删除成功！！ ', res)
+              wx.hideLoading();
+              fileId = ""
+              _this.hidePageClose();
+              _this.onLoad();
+            },
+            fail: err => {
+              wx.showToast({
+                title: '[云存储] 调用失败' + err,
+                icon: 'none',
+              })
+              console.error('[云存储] 调用失败', err)
+            }
+          })
+        } else if (res.cancel) {
+          return false;
+        }
+      }
     })
   },
 })

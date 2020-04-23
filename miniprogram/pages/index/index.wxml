@@ -10,7 +10,7 @@
   <!-- 留言列表 -->
   <text wx:if="{{msg.length==0}}">暂无留言……^_^</text>
   <scroll-view class="msgList" style="height: {{scrollViewHeight}}px" scroll-y="true" scroll-top="{{scrollTop}}">
-    <view class="wrap" wx:for="{{msg}}" wx:key="{{index}}">      
+    <view class="wrap" wx:for="{{msg}}" wx:key="index" data-id="{{item._id}}" bindlongpress="handleLongPress">      
       <image src="{{item.headimg}}" class="headImg"></image>
       <text class="owner"> {{item.owner}} : </text>
       <text class="content" style="overflow:scroll">{{item.message}}</text>

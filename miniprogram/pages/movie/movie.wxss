@@ -18,3 +18,30 @@ button{
 /* button.button-hover {
   background-color: grey;
 } */
+.hidePage{
+  position: fixed;
+  z-index: 9999;
+  bottom: 0;
+  width:100%;
+  margin:0 auto;
+  background: rgb(27, 193, 223);
+  border-radius: 5px 5px 0 0
+}
+.cancel{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(16, 106, 122);
+  color: rgb(0,255,255)
+}
+.plain-hover{
+  position: relative;
+  top: 3rpx;
+  box-shadow:0px 0px 10px #bbbec4 inset; 
+}
+.hidePage text{
+  display: block
+}
+.hidePage image{
+  width:100%
+}

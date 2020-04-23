@@ -23,7 +23,7 @@ Page({
       { name: "感官游戏", src: "https://www.mmicloud.com:65/20190418/vnWQqvHz/index.m3u8" },
       { name: "机械姬", src: "http://yushou.qitu-zuida.com/20180221/NY8JmUlV/index.m3u8" },
       { name: "火星救援", src: "https://www.mmicloud.com:65/20190407/EkcdDD1H/index.m3u8" },
-      { name: "这个男人来自地球", src: "https://www.mmicloud.com:65/20190418/yRYValD9/index.m3u8" },
+      { name: "这个男人来自地球", src: "http://yi.jingdianzuida.com/20191122/e2XX5E0L/index.m3u8" },
       { name: "少数派报告", src: "https://www.mmicloud.com:65/20190401/g8i5IXyi/index.m3u8" },            
       { name: "机械公敌", src: "https://www.gentaji.com:65/20200218/yUdFfsE1/index.m3u8" },
       { name: "彗星来的那一夜", src: "http://yiyi.55zuiday.com/20171208/HF10h5lP/index.m3u8" },
@@ -46,19 +46,43 @@ Page({
       "#FA8072", "#EEB422", "#EE6363", "#CAFF70", "#DC143C","#FF0000"],
     // 存储随机颜色
     randomColorArr: [],
-    index: null      //按钮显示旋转图标，表示正在播放
+    index: null,      //按钮显示旋转图标，表示正在播放
+    sonPage: false,
+    movieDesc:{}
   },
   //把src传递给vedio组件
   srcFun: function (e) {
     var _this = this;
     var srcData = e.target.dataset.src
+    var nameData = e.target.dataset.name
     console.log('srcData:', srcData);
     console.log('currentTarget:', e.target.dataset)
+    //把影片name传给云函数获取影片简介
+    wx.cloud.callFunction({
+      name: "movieHttp",
+      data: {
+        name: nameData,
+      },
+      success: res => {
+        let d = JSON.parse(res.result)
+        console.log(d.result)
+        _this.setData({ 
+          movieDesc: d.result,
+          sonPage: true
+          });
+        // console.log("movieDesc:", _this.data.movieDesc.result.title)
+        _this.data.movieDesc = {}
+      },
+      fail: err => {
+        console.error('[云函数db] 调用失败', err)
+      }
+    })
     _this.setData({ 
       src: srcData,
       index: e.target.dataset.key,
+      
     })
-    console.log('index:', typeof (e.target.dataset.key))
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -80,7 +104,9 @@ Page({
       randomColorArr: randomColorArr
     });
   },
-
+  hidePageClose() {
+    this.setData({ sonPage: false })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

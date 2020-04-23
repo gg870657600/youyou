@@ -3,6 +3,20 @@
   <video src="{{src}}" controls='true' bindlongpress="bindLongTap" bindtouchstart="touchStart" bindtouchend="touchEnd" >
   </video>
   <view bindtap="srcFun"  >
-    <button id="buttonList" loading='{{key==index? "true" : ""}}' wx:for="{{movieData}}" wx:for-index="key"  wx:for-item="item" data-src="{{item.src}}" size="mini" data-key="{{key}}" style="background-color:{{randomColorArr[key]}};">{{item.name}}</button>
+    <button id="buttonList" loading='{{key==index? "true" : ""}}' wx:for="{{movieData}}" wx:for-index="key"  wx:for-item="item" data-src="{{item.src}}" data-name="{{item.name}}" size="mini" data-key="{{key}}" style="background-color:{{randomColorArr[key]}};">{{item.name}}</button>
   </view>
+  //影片简介
+  <scroll-view class="hidePage" scroll-y='true' style="height:400px" wx:if="{{sonPage}}">
+    <button class="cancel" bindtap="hidePageClose" hover-class="plain-hover"><icon type="cancel" size="40" color="rgb(0,255,255)"/>关闭页面</button>
+    <text >电影名：{{movieDesc.title}}</text>
+    <text >类型：{{movieDesc.tag}}</text>
+    <text >上映时间：{{movieDesc.year}}</text>
+    <text >上映地点：{{movieDesc.area}}</text>
+    <text >导演：{{movieDesc.dir}}</text>
+    <text >演员：{{movieDesc.act}}</text>
+    <text >简介：{{movieDesc.desc}}</text>
+    <image src="{{movieDesc.cover}}" mode="widthFix"></image>
+    
+    
+  </scroll-view>
 </view>

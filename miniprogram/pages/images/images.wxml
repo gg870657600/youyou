@@ -1,5 +1,5 @@
 <view style="flex-direction:column;">
-  <block wx:for="{{imageId}}" wx:key="{{index}}"> 
-    <image src="{{item}}" mode="widthFix"  data-src="{{item}}" data-list= "{{imageId}}" bindtap='imgClick'></image>
+  <block wx:for="{{imageId}}" wx:key="index"  > 
+    <image src="{{item}}" mode="widthFix"  data-src="{{item}}" data-list= "{{imageId}}" bindtap='imgClick'  bindlongpress="handleLongPress"></image>
   </block>
 </view>

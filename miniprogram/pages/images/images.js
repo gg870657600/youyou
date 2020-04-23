@@ -1,5 +1,6 @@
 // pages/images/images.js
 var fileID = []
+var dbID = []
 var imgListStart = 0     //返回的img fileId列表，从索引0开始取数据
 var total     //返回的img fileId列表元素总数
 var limitNum = 10    //从数据库取多少个元素
@@ -10,6 +11,7 @@ Page({
    */
   data: {
     imageId:[],
+    dbId:[]
   },
 
   /**
@@ -31,17 +33,20 @@ Page({
       //把取的的数据倒序排列，push到fileID集合
       const imagedata = await db.collection('image').orderBy('createTime', 'desc').skip(imgListStart).limit(limitNum).get()      
       imagedata.data.forEach(item => {
-        fileID.push(item.fileId)
+        fileID.push(item.fileId);
+        dbID.push(item._id);
       })
       console.log('fileID:', fileID)
 
       _this.setData({
-        imageId: fileID
+        imageId: fileID,
+        dbId: dbID
       })
-
+      console.log('dbId:', _this.data.dbId)
     }
     imgdata()
     fileID = [];
+    dbID = []
     // console.log('imageId:',_this.data.imageId)
   },
 
@@ -127,13 +132,13 @@ Page({
       // wx.pageScrollTo({
       //   scrollTop: 0
       // })
+    }else{
+      wx.showToast({
+        icon: 'none',
+        title: '没有啦...',
+        duration: 2000
+      })
     }
-    wx.showToast({
-      icon: 'none',
-      title: '没有啦...',
-      duration: 2000
-    })
-
   },
 
   /**
@@ -141,5 +146,67 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  handleLongPress: function (e) {
+    var _this = this;
+    console.log('id:', e.currentTarget.dataset.src);
+    var fileId = e.currentTarget.dataset.src; //获取当前长按image id
+    //有时候长按会获取不到id
+    if (fileId == null) {
+      wx.showToast({
+        title: '未获取到id，请长按重新尝试',
+        icon: 'none',
+      })
+      return
+    }
+    
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除该图片吗？',
+      success: function (res) {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '删除中...',
+          })
+          //数据库 原生删除
+          const db = wx.cloud.database();
+          db.collection('image').where({
+            fileId: fileId
+            }).remove()
+            .then(() => {
+              console.log("数据库图片删除成功");
+              wx.hideLoading();
+            })
+            .catch(err => {
+              console.log(err);
+          });
+          //云函数删除
+          wx.cloud.callFunction({
+            name: "cloudStorage",
+            data: {
+              fileId: fileId
+            },
+            success: res => {
+              wx.showToast({
+                title: '[云存储] 删除成功！！',
+                icon: 'none',
+              })
+              console.log('[云存储] 删除成功！！ ', res)
+              wx.hideLoading();
+              _this.onLoad();
+            },
+            fail: err => {
+              wx.showToast({
+                title: '[云存储] 调用失败' + err,
+                icon: 'none',
+              })
+              console.error('[云存储] 调用失败', err)
+            }
+          })  
+        } else if (res.cancel) {
+          return false;
+        }
+      }
+    })
+  },
 })

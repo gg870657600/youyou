@@ -1,10 +1,11 @@
 <view>
-  <view wx:for="{{videoId}}" wx:for-item="item" wx:for-index="index" wx:key="{{index}}"> 
-    <video src="{{item}}" data-item="{{index}}" controls='true' data-fileid="{{item}}" bindlongpress="bindLongTap" bindtouchstart="touchStart" bindtouchend="touchEnd" ></video>
+  <view wx:for="{{videoId}}" wx:for-item="item" wx:for-index="index" wx:key="index"> 
+    <video src="{{item}}" custom-cache="{{false}}" data-item="{{index}}" controls='true' data-fileid="{{item}}" bindlongpress="bindLongTap" bindtouchstart="touchStart" bindtouchend="touchEnd" ></video>
 
   </view>
   <cover-view class="hidePage" wx:if="{{show}}">
     <button bindtap="downloadVideo" hover-class="plain-hover">下 载</button>
+    <button bindtap="deleteVideo" hover-class="plain-hover" >删 除</button>
     <button bindtap="hidePageClose" hover-class="plain-hover">取 消</button>
   </cover-view>
 </view>
