@@ -1,0 +1,23 @@
+<!--pages/selectMovie/selectMovie.wxml-->
+<view>  
+  <view>
+    <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+        <!-- 搜索框 -->
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" value="{{inputValue}}" bindinput='updateValue' placeholder="请输入搜索内容"/>
+            </view>
+        </view>
+        <!-- 搜索按钮,调用搜索查询方法 -->
+        <view class="weui-search-bar__cancel-btn" bindtap='searchMovies'>搜索</view>
+    </view>
+    <!-- 搜索结果列表 -->
+    <view class="searchMoviesList" wx:for="{{searchMoviesList}}" wx:for-item="item" wx:key="index" data-url="{{item.url}}" bindtap="searchMovies2">
+      <button>
+        <text>{{item.name}}</text>
+      </button>
+    </view>
+    
+  </view>  
+</view> 

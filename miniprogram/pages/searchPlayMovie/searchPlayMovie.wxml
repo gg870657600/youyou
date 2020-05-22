@@ -1,0 +1,26 @@
+<!--pages/searchPlayMovie/searchPlayMovie.wxml-->
+<view>
+  <!-- 播放界面 -->
+    <view id="play">
+      <video src="{{m3u8url}}" controls='true' bindlongpress="bindLongTap" bindtouchstart="touchStart" bindtouchend="touchEnd" >
+      </video>
+    </view>
+    <view class="details">
+      <text>电影名： {{name}}</text>
+      <text>导演： {{director}}</text>
+      <text>上映时间： {{year}}</text>
+      <text>上映地点： {{region}}</text>
+      <text>语言： {{language}}</text>
+      <text>类型： {{genre}}</text>
+      <text>演员： {{performer}}</text>
+      <view >
+        <text>清晰度/集数： </text> 
+        <button size="mini" wx:for="{{urlList}}" wx:for-item="item" wx:key="index" data-url="{{m3u8?item.m3u8url : item.onlineurl}}" bindtap="updateUrl">{{item.num}}</button>       
+      <!-- </view>
+        <text selectable='true'>在线观看地址1（推荐UC浏览器观看）： {{item.m3u8url}}</text>
+        <text selectable='true'>在线观看地址2（推荐UC浏览器观看）： {{item.onlineurl}}</text>
+      <view> -->
+      </view>
+      <image src="{{imgUrl}}" mode="widthFix"></image>
+    </view>
+</view>

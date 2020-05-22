@@ -30,8 +30,15 @@ Page({
       { name: "2001太空漫游", src: "http://hong.tianzhen-zuida.com/20191019/11322_ad911146/index.m3u8" },
       { name: "盗梦空间", src: "https://www.mmicloud.com:65/20190523/7gz6dcjB/index.m3u8" },
       { name: "银翼杀手2049", src: "https://www.mmicloud.com:65/20190418/lbxSjzBB/index.m3u8" },
-      { name: "机器人总动员", src: "https://www.mmicloud.com:65/20190323/VhUBvTXM/index.m3u8" },      
-
+      { name: "机器人总动员", src: "https://www.mmicloud.com:65/20190323/VhUBvTXM/index.m3u8" },
+      //喜剧
+      { name: "美丽人生", src: "http://bili.meijuzuida.com/20191230/22139_e860b133/index.m3u8"},
+      { name: "疯狂动物城", src: "http://leshi.cdn-zuyida.com/20171102/tSKThWZI/index.m3u8"}, 
+      { name: "寻梦环游记", src: "https://www.mycqzx.com:65/20190803/2d2gh7xz/index.m3u8" },
+      { name: "绿皮书", src: "http://feifei.feifeizuida.com/20190220/5569_d8e2612b/index.m3u8" },    
+      { name: "小姐好白", src: "https://www.mmicloud.com:65/20190401/xZYGdV3d/index.m3u8" },
+      //
+      { name: "何以为家", src: "http://feifei.feifeizuida.com/20190421/9424_8f041bb6/index.m3u8" },
     ],
     src:"",
     // 自定义自己喜欢的颜色

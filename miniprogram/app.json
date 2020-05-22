@@ -6,13 +6,16 @@
     "pages/me/me",
     "pages/dog/dog",
     "pages/movie/movie",
-    "pages/webView/webView"
+    "pages/webView/webView",
+    "pages/picture/picture",
+    "pages/searchMovie/searchMovie",
+    "pages/searchPlayMovie/searchPlayMovie"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "莜莜酱",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
@@ -50,9 +53,11 @@
     "request": 10000,
     "downloadFile": 10000
   },
+  "requiredBackgroundModes": [
+    "audio",
+    "location"
+  ],
   "navigateToMiniProgramAppIdList": [
-    "wx519da88d998da681","wxc111e738cfc226b7","wxb7a563d7da8ea2ee","wx9633e6ae01bc6e46","wxb46e48ee0b375615","wx4178508f9acf2fce","wx1da266fa6db4c014","wx457d487a663f2186"
-     
+    "wx519da88d998da681","wxc111e738cfc226b7","wxb7a563d7da8ea2ee","wx9633e6ae01bc6e46","wxb46e48ee0b375615","wx4178508f9acf2fce","wx1da266fa6db4c014","wx637d895095c6a4f3","wx4cd33e9fcc919598" ,"wxb4f9119e22fd8814","wx7460918fead630c5","wxce9c350a5343f289","wx937882b9a577922c" ,"wx3e39f943266c2f03" ,"wx782c34974a1f6751","wx06d8b05090555405"  
   ]
-  
 }

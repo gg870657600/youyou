@@ -21,6 +21,7 @@ App({
       })
       back.onEnded(() => {
         console.log("音乐播放结束");
+        back.src = "http://mp3.9ku.com/m4a/509299.m4a";
       })
     }
     bindback()

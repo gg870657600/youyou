@@ -1,0 +1,20 @@
+<!--pages/picture/picture.wxml-->
+
+<view>
+  <swiper 
+  class="container" 
+  indicator-dots="{{indicatordots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}" 
+  bindchange='onSlideChange'
+  >
+    <block wx:for="{{imgList}}" wx:key="index">
+      <swiper-item class="vol-swiper-item">
+        <view class="vol-card">
+          <image class="vol-picture" src="{{item}}" mode="aspectFill"></image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

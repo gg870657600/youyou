@@ -32,6 +32,13 @@
       <text>育儿</text>
     </button>
 
+    <!-- 图 -->
+    <navigator url="../picture/picture" hover-class="navigator-hover">
+        <button class="uploader-text">
+          <text>蜡笔小新</text>
+        </button>
+    </navigator>
+
     <navigator url="../dog/dog" hover-class="navigator-hover">
       <button class="uploader-text">
         <text>舔狗日记</text>
@@ -42,7 +49,12 @@
         <text>你要的电影我都有</text>
       </button>
     </navigator>
-
+    <navigator url="../searchMovie/searchMovie" hover-class="navigator-hover">
+      <button class="uploader-text">
+        <text>视频搜索</text>
+      </button>
+    </navigator>
+    
     <!-- <view bindtap="webView" class="webView">
       <view class="uploader-text" data-src="https://www.baidu.com">百度</view> -->
       <!-- <view class="uploader-text" data-src="https://www.zhihu.com/explore">知乎</view>
@@ -55,8 +67,8 @@
   </view>
   <!-- 遮罩层 -->
   <view class="maskLayer" wx:if="{{sonPage}}" bindtap="hidePageClose"></view>
-  <!-- 育儿频道影藏内容 -->
-  <view class="hidePage" wx:if="{{sonPage}}">
+  <!-- 育儿频道隐藏内容 -->
+  <scroll-view class="hidePage" scroll-y='true' style="height:400px" wx:if="{{sonPage}}">
     <button class="cancel" bindtap="hidePageClose" hover-class="plain-hover"><icon type="cancel" size="40" color="rgb(0,255,255)"/>关闭页面</button>
     <button bindtap="navigateToMiniProgram3" hover-class="plain-hover">宝宝树孕育</button>
     <button bindtap="navigateToMiniProgram4" hover-class="plain-hover">小思妈妈营养辅食</button>
@@ -64,10 +76,18 @@
     <button bindtap="navigateToMiniProgram6" hover-class="plain-hover">大J育儿说</button>
     <button bindtap="navigateToMiniProgram7" hover-class="plain-hover">年糕妈妈育儿百科</button>
     <button bindtap="navigateToMiniProgram8" hover-class="plain-hover">千千动画屋</button>
-  </view>
+    <button bindtap="navigateToMiniProgram9" hover-class="plain-hover">小猪佩琪学画画涂鸦填色</button>
+    <button bindtap="navigateToMiniProgram10" hover-class="plain-hover">宝宝填色涂鸦</button>
+    <button bindtap="navigateToMiniProgram11" hover-class="plain-hover">儿童拼图益智游戏</button>
+    <button bindtap="navigateToMiniProgram12" hover-class="plain-hover">儿童休闲益智娱乐学习</button>
+    <button bindtap="navigateToMiniProgram13" hover-class="plain-hover">幼儿英语启蒙课堂</button>
+    <button bindtap="navigateToMiniProgram14" hover-class="plain-hover">幼儿英语早教认知闪卡</button>
+    <button bindtap="navigateToMiniProgram15" hover-class="plain-hover">糖果绘本阅读（英语启蒙）</button>
+    <button bindtap="navigateToMiniProgram16" hover-class="plain-hover">在线读绘本</button>
+  </scroll-view>
   <!-- 小白图片 -->
   <image class="xiaobai" src="../../images/xiaobai.jpg"></image>
-
+  
   
 
   

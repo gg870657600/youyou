@@ -140,10 +140,7 @@ Page({
         title: '下一页...',
         duration: 2000
       })
-      //回到顶部
-      // wx.pageScrollTo({
-      //   scrollTop: 0
-      // })
+      return
     }
     wx.showToast({
       icon: 'none',

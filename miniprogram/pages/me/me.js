@@ -83,7 +83,7 @@ Page({
     // 选择图片
     wx.chooseImage({
       count: 9,
-      sizeType: ['compressed'],
+      sizeType: ['original','compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
         // wx.showLoading({
@@ -99,7 +99,7 @@ Page({
         const tempFilePaths = res.tempFilePaths
         for (var i = 0; i<tempFilePaths.length ;i++){
           // 上传图片
-          const cloudPath = Date.now() + tempFilePaths[i].match(/\.[^.]+?$/)[0]
+          const cloudPath = 'image/' + Date.now() + tempFilePaths[i].match(/\.[^.]+?$/)[0]
           wx.cloud.uploadFile({
             cloudPath,
             filePath: tempFilePaths[i],
@@ -160,6 +160,7 @@ Page({
     var that = this
     // 选择视频
     wx.chooseVideo({
+      compressed: false,
       success: function (res) {
         // wx.showLoading({
         //   title: '上传中',
@@ -173,8 +174,8 @@ Page({
         })
         const tempFilePaths = res.tempFilePath
         console.log('tempFilePaths', res)
-        // 上传图片
-        const cloudPath = Date.now() + tempFilePaths.match(/\.[^.]+?$/)[0]
+        // 上传视频
+        const cloudPath = 'video/' + Date.now() + tempFilePaths.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
           cloudPath,
           filePath: tempFilePaths,
@@ -336,7 +337,95 @@ Page({
   // 千千动画屋
   navigateToMiniProgram8() {
     wx.navigateToMiniProgram({
-      appId: 'wx457d487a663f2186',
+      appId: 'wx637d895095c6a4f3',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 小猪佩琪学画画涂鸦填色
+  navigateToMiniProgram9() {
+    wx.navigateToMiniProgram({
+      appId: 'wx4cd33e9fcc919598',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 宝宝填色涂鸦
+  navigateToMiniProgram10() {
+    wx.navigateToMiniProgram({
+      appId: 'wxb4f9119e22fd8814',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 儿童拼图益智游戏
+  navigateToMiniProgram11() {
+    wx.navigateToMiniProgram({
+      appId: 'wx7460918fead630c5',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 儿童休闲益智娱乐学习
+  navigateToMiniProgram12() {
+    wx.navigateToMiniProgram({
+      appId: 'wxce9c350a5343f289',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 幼儿英语启蒙课堂
+  navigateToMiniProgram13() {
+    wx.navigateToMiniProgram({
+      appId: 'wx937882b9a577922c',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 幼儿英语早教认知闪卡
+  navigateToMiniProgram14() {
+    wx.navigateToMiniProgram({
+      appId: 'wx3e39f943266c2f03',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 糖果绘本阅读
+  navigateToMiniProgram15() {
+    wx.navigateToMiniProgram({
+      appId: 'wx782c34974a1f6751',
+      success(res) {
+        wx.showToast({
+          title: '跳转成功'
+        })
+      }
+    })
+  },
+  // 在线读绘本
+  navigateToMiniProgram16() {
+    wx.navigateToMiniProgram({
+      appId: 'wx06d8b05090555405',
       success(res) {
         wx.showToast({
           title: '跳转成功'
